@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp_RazorPages_.NetCore8.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//builder.Host.UseSerilog();// Dependency injection
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ));//dependency injection for dbContext and link it with my connection string
+
 
 var app = builder.Build();
 
