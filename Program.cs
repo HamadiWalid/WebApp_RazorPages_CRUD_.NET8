@@ -12,6 +12,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     ));//dependency injection for dbContext and link it with my connection string
 
 
+//builder.Services.AddRazorPages()
+//    .AddRazorPagesOptions(options => {
+//        options.RootDirectory = "/ClientList";
+//    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,5 +34,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
 
 app.Run();
