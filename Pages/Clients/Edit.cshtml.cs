@@ -7,21 +7,24 @@ namespace WebApp_RazorPages_.NetCore8.Pages.Clients
 {
 	[BindProperties]
 
-	public class CreateModel : PageModel
+	public class EditModel : PageModel
     {
 		private readonly ApplicationDbContext _context;
 
 		public Client Client { get; set; }
 
-		public CreateModel(ApplicationDbContext context)
+		public EditModel(ApplicationDbContext context)
 		{
 			_context = context;
 		}
-		public void OnGet()
-		{
-		}
-
-		public async Task<IActionResult> OnPost()
+        public void OnGet(int id)
+        {
+            Client = _context.Clients.Find(id);
+            //Category = _db.Category.FirstOrDefault(u=>u.Id==id);
+            //Category = _db.Category.SingleOrDefault(u=>u.Id==id);
+            //Category = _db.Category.Where(u => u.Id == id).FirstOrDefault();
+        }
+        public async Task<IActionResult> OnPost()
 		{
             if (Client.Name == "okk")
             {
@@ -29,9 +32,10 @@ namespace WebApp_RazorPages_.NetCore8.Pages.Clients
             }//Custum validation
             if (ModelState.IsValid)//Server side
 			{
-				await _context.Clients.AddAsync(Client);
+			    _context.Clients.Update(Client);
 				await _context.SaveChangesAsync();
-				TempData["success"] = "Client created successfully";
+				TempData["success"] = "Client updated successfully";
+
 				return RedirectToPage("Index");
 			}
 			return Page();

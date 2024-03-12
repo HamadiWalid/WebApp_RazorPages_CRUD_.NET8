@@ -1,15 +1,19 @@
 ﻿@page
-@model WebApp_RazorPages_.NetCore8.Pages.Clients.CreateModel
+@model WebApp_RazorPages_.NetCore8.Pages.Clients.DeleteModel
 
 
 <form method="post">
+	<input hidden asp-for="Client.Id" />
+
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Create Client</h2>
+			<h2 class="text-primary pl-3">Delete Client</h2>
 			<hr />
 		</div>
-@* 		<div asp-validation-summary="All"></div>
- *@ @* show all error validation *@
+		@* 		<div asp-validation-summary="All"></div>
+		 *@ @* show all error validation *@
+
+
 		<div class="mb-3">
 			<label asp-for="Client.Name"></label>
 			<input asp-for="Client.Name" class="form-control" />
@@ -38,7 +42,7 @@
 
 
 
-		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+		<button type="submit" class="btn btn-danger" style="width:150px;">Delete</button>
 		<a asp-page="Index" class="btn btn-secondary" style="width:150px;"> Back to List</a>
 
 	</div>

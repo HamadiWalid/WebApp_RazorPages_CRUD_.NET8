@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using WebApp_RazorPages_.NetCore8.Data;
 
@@ -13,9 +14,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 
 //builder.Services.AddRazorPages()
-//    .AddRazorPagesOptions(options => {
+//    .AddRazorPagesOptions(options =>
+//    {
 //        options.RootDirectory = "/ClientList";
 //    });
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
